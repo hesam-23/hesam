@@ -7,9 +7,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Irish+Grover&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
-
 <style>
-  body {
+   body {
     margin: 0;
     font-family: 'Irish Grover', cursive;
     background-color: #ecf0f1;
@@ -25,7 +24,7 @@ nav {
   justify-content: center;   /* وسط افقی */
   align-items: center;       /* وسط عمودی */
   gap: clamp(20px, 4vw, 60px); /* فاصله بین آیتم‌ها */
-  background-color: #ecf0f1;
+  background: linear-gradient(120deg, #e6ebef 30%, #ffffff 50%, #cfd6dc 60%, #e6ebef 100%);
   z-index: 100;
   border-bottom: 1px solid #ccc;
   padding: 20px 0; /* ارتفاع پویا و قابل تغییر */
@@ -163,6 +162,124 @@ opacity:0;
 .hamburger.active span:nth-child(3){
 transform: rotate(-45deg) translate(5px,-5px);
 }
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 117px);
+   background: linear-gradient(120deg, #e6ebef 30%, #ffffff 50%, #cfd6dc 60%, #e6ebef 100%);
+  overflow: hidden;
+}
+.nav-logo img {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* GRID */
+.grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.fog {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  /* افکت دودی مات */
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.5) 70%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+
+  mix-blend-mode: multiply;
+}
+
+/* IMAGE BLOCKS */
+.img {
+  background-size: cover;
+  background-position: center;
+  animation: zoomIn 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+/* layout مثل نسخه اول */
+.img-1 { grid-column: 4 / 5; grid-row: 1 / 4; background-image: url('images/1.jpg'); animation-delay: 0.2s; }
+.img-2 { grid-column: 3 / 4; grid-row: 2 / 3; background-image: url('images/2.jpg'); animation-delay: 0.4s; }
+.img-3 { grid-column: 3 / 4; grid-row: 3 / 4; background-image: url('images/3.jpg'); animation-delay: 0.6s; }
+.img-4 { grid-column: 2 / 4; grid-row: 1 / 2; background-image: url('images/04.svg'); animation-delay: 0.8s; }
+.img-5 { grid-column: 2 / 3; grid-row: 3 / 4; background-image: url('images/5.jpg'); animation-delay: 1s; }
+.img-6 { grid-column: 1 / 2; grid-row: 2 / 3; background-image: url('images/6.jpg'); animation-delay: 1.2s; }
+.img-7 { grid-column: 1 / 3; grid-row: 1 / 2; background-image: url('images/7.jpg'); animation-delay: 1.4s; }
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+
+  .hero {
+    height: 100vh;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 6px;
+    padding: 10px;
+  }
+
+   .nav-logo img {
+    height: 80px;
+        display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* لوگو سمت راست */
+  .nav-logo {
+    order: 1;
+  }
+
+  /* همبرگر سمت چپ */
+  .hamburger {
+    order: 2;
+  }
+
+  /* لینک‌ها مخفی */
+  nav a {
+    display: none;
+  }
+  
+
+  /* ساده‌سازی layout برای موبایل */
+  .img-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .img-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .img-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .img-4 { grid-column: 1 / 3; grid-row: 3 / 4; }
+  .img-5 { grid-column: 1 / 2; grid-row: 4 / 5; }
+  .img-6 { grid-column: 2 / 3; grid-row: 4 / 5; }
+  .img-7 { grid-column: 1 / 3; grid-row: 5 / 6; }
+
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 6px;
+  }
+}
 
 /* ================== موبایل ================== */
 @media (max-width: 767px) {
@@ -184,13 +301,23 @@ display:flex;
   .box3-text2 { font-size: clamp(18px, 4vw, 30px); top: 10vh; left: 40%; transform: translateX(-50%); line-height: 0.5; }
 }
 
-/* ================ تبلت عمودی ================ */
-@media (min-width: 768px) and (max-width: 900px) and (orientation: portrait) {
-  #box3 { min-height: 90vh; }
-  .box3-text1 { font-size: clamp(70px, 5vw, 55px); top: 42vh; left: 14%; transform: translateX(-50%); }
-  .box3-text2 { font-size: clamp(20px, 3.5vw, 35px); top: 10vh; left: 44%; transform: translateX(-50%); line-height: 0.5; }
-}
+@media (min-width: 601px) and (max-width: 900px) {
 
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 15px;
+  }
+
+  .img-1 { grid-column: 3 / 4; grid-row: 1 / 4; }
+  .img-2 { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .img-3 { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .img-4 { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .img-5 { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .img-6 { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .img-7 { grid-column: 1 / 3; grid-row: 1 / 2; }
+
+}
 /* ================ تبلت افقی ================ */
 @media (min-width: 901px) and (max-width: 1024px) and (orientation: landscape) {
   #box3 { min-height: 75vh; }
@@ -228,7 +355,6 @@ display:flex;
   .box3-text2 {
     font-size: clamp(32px, 2vw, 40px); top: 21vh;  left: 85%;  transform: translateX(-50%);  line-height: 0.5;}
 }
-
 </style>
 </head>
 
@@ -240,6 +366,10 @@ display:flex;
 <span></span>
 <span></span>
 <span></span>
+</div>
+
+<div class="nav-logo">
+  <img src="images/27.svg" alt="logo">
 </div>
 
 <a href="about.html" target="_blank">ABOUT ME</a>
@@ -254,16 +384,20 @@ display:flex;
 <a href="contact.html">CONTACT ME</a>
 </div>
 
-<div id="box3">
-  <img src="images/23.svg" class="box3-image" alt="HEGOLZ Image">
+ <div class="hero">
+  <div class="fog"></div>
 
-  <div class="box3-text1">HEGOLZ</div>
-
-  <div class="box3-text2">
-    Personal<br>
-    Projects<br>
-    & Design
+  <div class="grid">
+       <div class="img img-1"></div>
+    <div class="img img-2"></div>
+    <div class="img img-3"></div>
+    <div class="img img-4"></div>
+    <div class="img img-5"></div>
+    <div class="img img-6"></div>
+    <div class="img img-7"></div>
   </div>
+  </div>
+
 </div>
 
 <script>

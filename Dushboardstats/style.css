@@ -1,0 +1,139 @@
+/* ظاهر کلی صفحه */
+body {
+  font-family: 'Aboreto', cursive;
+  background-color: #f4f4f4;
+  margin: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* کنترل‌ها */
+.controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  padding: 8px 15px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4e73df;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.controls button:hover {
+  background-color: #2e59d9;
+}
+
+/* Loading */
+#loading {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* کارت‌ها */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.count {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: transform 0.3s;
+}
+
+/* نمودار */
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.chart-container canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* حالت تاریک */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+body.dark-mode .card {
+  background-color: #2c2c2c;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .controls button {
+  background-color: #555;
+}
+
+body.dark-mode .controls button:hover {
+  background-color: #777;
+}
+
+/* حالت پیش‌فرض دسکتاپ و تبلت */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-buttons, .action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* فقط موبایل زیر 767px */
+@media (max-width: 767px) {
+  .controls {
+    flex-direction: column; /* ستون، دو ردیف */
+    align-items: center;
+    gap: 15px; /* فاصله بین ردیف‌ها */
+  }
+
+  .filter-buttons {
+    justify-content: center; /* وسط چین ردیف اول */
+  }
+
+  .action-buttons {
+    justify-content: center; /* وسط چین ردیف دوم */
+  }
+}
+
+/* ریسپانسیو کارت‌ها */
+@media (max-width: 479px) { .dashboard { grid-template-columns: 1fr; } }
+@media (min-width: 480px) and (max-width: 767px) { .dashboard { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 768px) and (max-width: 991px) { .dashboard { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 992px) and (max-width: 1199px) { .dashboard { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px) and (max-width: 1599px) { .dashboard { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1600px) { .dashboard { grid-template-columns: repeat(3, 1fr); } }

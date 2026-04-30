@@ -3,160 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HEGOLZ_CONTACT ME</title>
+<title>HEGOLZ Contact</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.1.1/css/intlTelInput.css"/>
-
-<style>
-*{ box-sizing:border-box; }
-
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  display:flex;
-  justify-content:center; /* برای قرار دادن کل بخش وسط صفحه */
-  padding:0;
-}
-
-/* بخش فرم (پازل سایت) */
-.section-form {
-  width:1440px;
-  height:1300px;
-  background-image:url("images/41.svg"); /* جایگزین عکس خودت کن */
-  background-size:cover;
-  background-position:top center;
-  background-repeat:no-repeat;
-
-  display:flex;
-  justify-content:flex-start; /* فرم سمت راست */
-  align-items:flex-start;   /* فرم از بالا شروع شود */
-  padding:120px 80px;
-  position:relative;
-}
-
-/* کارت فرم */
-.container {
-  width:100%;
-  margin-top: 40PX;
-  max-width:450px;
-  padding:35px;
-  border-radius:18px;
-  background:rgba(255,255,255,0.75);
-  backdrop-filter:blur(7px);
-  box-shadow:0 10px 40px rgba(0,0,0,0.25);
-  height:auto;
-}
-
-h1{
-  font-family:'Aboreto',cursive;
-  text-align:center;
-  margin-bottom:25px;
-  letter-spacing:2px;
-  font-size:24px;
-}
-
-form{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-label{
-  font-size:13px;
-  font-weight:500;
-}
-
-.required::after{
-  content:" *";
-  color:rgb(0, 0, 0);
-}
-
-input,select{
-  padding:12px;
-  border-radius:8px;
-  border:1px solid #80847e;
-  font-size:14px;
-  background:white;
-  transition:0.2s;
-}
-
-input:focus,
-select:focus{
-  outline:none;
-  border-color:black;
-  box-shadow:0 0 0 2px rgba(0,0,0,0.08);
-}
-
-button{
-  margin-top:10px;
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  background:rgb(93, 92, 92);
-  color:white;
-  font-size:15px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover{
-  background:#000000;
-  transform:translateY(-2px);
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<form action="https://formspree.io/f/mreyerde" method="POST">
 
-<div class="section-form">
-  <div class="container">
-    <h1>CONTACT ME</h1>
-    <form action="https://formspree.io/f/mreyerde" method="POST">
+  
+  <!-- First Name -->
+<label class="required">First Name</label>
+<input type="text" name="first_name" placeholder="First Name" required
+       pattern="[A-Za-z\s-]+$"
+       title="Only letters, spaces, and hyphens are allowed">
 
-      <!-- اجباری -->
-      <label class="required">Name</label>
-      <input type="text" name="name" placeholder="Your Name" required>
+<!-- Last Name -->
+<label class="required">Last Name</label>
+<input type="text" name="last_name" placeholder="Last Name" required
+       pattern="[A-Za-z\s-]+$"
+       title="Only letters, spaces, and hyphens are allowed">
 
-      <label class="required">Email</label>
-      <input type="email" name="email" placeholder="Your Email" required>
+<!-- Gender (he/she/they) -->
+<label>Gender</label>
+<select name="gender">
+  <option value="">Select</option>
+  <option value="He">He</option>
+  <option value="She">She</option>
+</select>
 
-      <label class="required">Phone</label>
-      <input id="phone" type="tel" name="phone" placeholder="Your Phone" required>
+  <label class="required">Email</label>
+<input type="email" name="email" placeholder="Your Email" required
+       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+       title="Please enter a valid email address (example@domain.com)">
 
-      <!-- اختیاری -->
-      <label>Job (Optional)</label>
-      <input type="text" name="job" placeholder="Your Job">
+  <label class="required">Phone</label>
+<input id="phone" type="tel" name="phone" placeholder="Your Phone" required
+       pattern="^\d{10,15}$"
+       title="Enter a valid phone number with 10 to 15 digits only">
+<input type="hidden" name="full_phone" id="full_phone">
 
-      <label>Reason for Contact (Optional)</label>
-      <select name="reason">
-        <option value="">Select</option>
-        <option value="Message">Message</option>
-        <option value="Website Design">Website Design</option>
-        <option value="Consultation">Consultation</option>
-        <option value="Idea">Idea</option>
-      </select>
+  <label>Job (Optional)</label>
+  <input type="text" name="job" placeholder="Your Job">
 
-      <label>Website You Want (Optional)</label>
-      <input type="text" name="website" placeholder="Website URL">
-      <input type="text" name="website" placeholder="Website URL">
-      <input type="text" name="website" placeholder="Website URL">
+  <label>Reason for Contact (Optional)</label>
+  <select name="reason">
+    <option value="">Select</option>
+    <option value="Message">Message</option>
+    <option value="Website Design">Website Design</option>
+    <option value="Consultation">Consultation</option>
+    <option value="Idea">Idea</option>
+  </select>
 
-      <label>Do you currently have a website? (Optional)</label>
-      <select name="have_website">
-        <option value="">Select</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
+  <label>Website You Want (Optional)</label>
+  <input type="text" name="website" placeholder="Website URL 1" value="www.">
+<input type="text" name="website" placeholder="Website URL 2" value="www.">
+<input type="text" name="website" placeholder="Website URL 3" value="www.">
 
-      <label>How many pages need design? (Optional)</label>
-      <input type="number" name="pages" min="1" placeholder="Number of pages">
+  <label>Do you currently have a website? (Optional)</label>
+  <select name="have_website">
+    <option value="">Select</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
 
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</div>
+  <label>How many pages need design? (Optional)</label>
+  <input type="number" name="pages" min="1" placeholder="Number of pages">
 
+  <button type="submit">Send Message</button>
+</form>
+<script>
+const firstNameInput = document.querySelector('input[name="first_name"]');
+const lastNameInput = document.querySelector('input[name="last_name"]');
+
+function allowLettersOnly(e) {
+  // فقط کاراکترهای غیرمجاز را حذف کن
+  e.target.value = e.target.value.replace(/[^A-Za-z\s-]/g, '');
+}
+
+firstNameInput.addEventListener('input', allowLettersOnly);
+lastNameInput.addEventListener('input', allowLettersOnly);
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.1.1/js/intlTelInput.min.js"></script>
 <script>
 const input = document.querySelector("#phone");

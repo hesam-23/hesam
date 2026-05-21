@@ -1,15 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEGOLZ Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Irish+Grover&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+<style>
+   body {
+    margin: 0;
+    font-family: 'Irish Grover', cursive;
+    background-color: #ecf0f1;
+  }
+
+/* ================= ناوبری ================= */
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 117px;  
+  display: flex;
+  justify-content: center;   /* وسط افقی */
+  align-items: center;       /* وسط عمودی */
+  gap: clamp(20px, 4vw, 60px); /* فاصله بین آیتم‌ها */
+  background: linear-gradient(120deg, #e6ebef 30%, #ffffff 50%, #cfd6dc 60%, #e6ebef 100%);
+  z-index: 100;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0; /* ارتفاع پویا و قابل تغییر */
+  box-sizing: border-box;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-size: clamp(18px, 2vw, 24px); /* اندازه متن نسبت به صفحه */
+  text-transform: uppercase;
+  font-family: 'Aboreto', cursive;
+  margin: 0;
+  padding: 0;
+  line-height: 1; /* وسط عمودی دقیق */
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #c5c1be; /* افکت هاور */
+}
+
+/* بخش هوم اصلاح‌شده بدون خراب شدن متن‌ها */
+#box3 {
+  position: relative;
+  width: 100%;           /* عرض کل صفحه */
+  max-width: 1440px;     /* حداکثر برای دسکتاپ */
+  height: 657px;         /* همان ارتفاع قبلی ثابت */
+  margin: 0 auto;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.box3-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;           /* تصویر کل عرض */
+  height: 100%;          /* تصویر کل ارتفاع */
+  object-fit:  cover;
+}
+
+/* افکت‌ها همانند قبل */
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideLeft {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* متن‌ها بدون تغییر اندازه قبلی، همان 640px و 208px */
+.box3-text1 {
+  position: absolute;
+  top: 300px;
+  left: 460px;
+  width: 208px;
+  color: #000000;
+  font-family: 'Irish Grover', cursive;
+  font-size: 65px;           /* اندازه ثابت قبلی */
+  animation: fadeSlideUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+.box3-text2 {
+  position: absolute;
+  top: 90px;
+  left: 1160px;
+  width: 264px;
+  color: #000000;
+  font-family: 'Italiana', serif;
+  font-size: 35px;
+  line-height: 0.5;
+  white-space: pre-line;
+  animation: fadeSlideLeft 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+.hamburger{
+display:none;
+width:30px;
+height:20px;
+flex-direction:column;
+justify-content:space-between;
+cursor:pointer;
+}
+
+.hamburger span{
+height:3px;
+background:#000;
+border-radius:2px;
+transition:0.3s;
+}
+
+.dropdown-menu{
+position:fixed;
+top:117px;
+left:0;
+width:100%;
+background:#ffffff;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:40px 0;
+opacity:0;
+pointer-events:none;
+transform:translateY(-20px);
+transition:0.35s;
+z-index:200;
+}
+
+.dropdown-menu.open{
+opacity:1;
+pointer-events:auto;
+transform:translateY(0);
+}
+
+.dropdown-menu a{
+font-family:'Aboreto', cursive;
+font-size:22px;
+text-decoration:none;
+color:#000;
+margin:10px 0;
+}
+.hamburger.active span:nth-child(1){
+transform: rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.active span:nth-child(2){
+opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+transform: rotate(-45deg) translate(5px,-5px);
+}
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 117px);
+   background: linear-gradient(120deg, #e6ebef 30%, #ffffff 50%, #cfd6dc 60%, #e6ebef 100%);
+  overflow: hidden;
+}
+.nav-logo img {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* GRID */
+.grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.fog {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  /* افکت دودی مات */
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.5) 70%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+
+  mix-blend-mode: multiply;
+}
+
+/* IMAGE BLOCKS */
+.img {
+  background-size: cover;
+  background-position: center;
+  animation: zoomIn 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+/* layout مثل نسخه اول */
+.img-1 { grid-column: 4 / 5; grid-row: 1 / 4; background-image: url('images/1.jpg'); animation-delay: 0.2s; }
+.img-2 { grid-column: 3 / 4; grid-row: 2 / 3; background-image: url('images/2.jpg'); animation-delay: 0.4s; }
+.img-3 { grid-column: 3 / 4; grid-row: 3 / 4; background-image: url('images/3.jpg'); animation-delay: 0.6s; }
+.img-4 { grid-column: 2 / 4; grid-row: 1 / 2; background-image: url('images/04.svg'); animation-delay: 0.8s; }
+.img-5 { grid-column: 2 / 3; grid-row: 3 / 4; background-image: url('images/5.jpg'); animation-delay: 1s; }
+.img-6 { grid-column: 1 / 2; grid-row: 2 / 3; background-image: url('images/6.jpg'); animation-delay: 1.2s; }
+.img-7 { grid-column: 1 / 3; grid-row: 1 / 2; background-image: url('images/7.jpg'); animation-delay: 1.4s; }
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+
+  .hero {
+    height: 100vh;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 6px;
+    padding: 10px;
+  }
+
+   .nav-logo img {
+    height: 80px;
+        display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* لوگو سمت راست */
+  .nav-logo {
+    order: 1;
+  }
+
+  /* همبرگر سمت چپ */
+  .hamburger {
+    order: 2;
+  }
+
+  /* لینک‌ها مخفی */
+  nav a {
+    display: none;
+  }
+  
+
+  /* ساده‌سازی layout برای موبایل */
+  .img-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .img-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .img-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .img-4 { grid-column: 1 / 3; grid-row: 3 / 4; }
+  .img-5 { grid-column: 1 / 2; grid-row: 4 / 5; }
+  .img-6 { grid-column: 2 / 3; grid-row: 4 / 5; }
+  .img-7 { grid-column: 1 / 3; grid-row: 5 / 6; }
+
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 6px;
+  }
+}
+
+/* ================== موبایل ================== */
+@media (max-width: 767px) {
+nav{
+justify-content:space-between;
+padding:0 20px;
+}
+
+nav a{
+display:none;
+}
+
+.hamburger{
+display:flex;
+}
+
+  #box3 { min-height: 80vh; }
+  .box3-text1 { font-size: clamp(60px, 7vw, 50px); top: 43vh; left: 20%; transform: translateX(-50%); }
+  .box3-text2 { font-size: clamp(18px, 4vw, 30px); top: 10vh; left: 40%; transform: translateX(-50%); line-height: 0.5; }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 15px;
+  }
+
+  .img-1 { grid-column: 3 / 4; grid-row: 1 / 4; }
+  .img-2 { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .img-3 { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .img-4 { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .img-5 { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .img-6 { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .img-7 { grid-column: 1 / 3; grid-row: 1 / 2; }
+
+}
+/* ================ تبلت افقی ================ */
+@media (min-width: 901px) and (max-width: 1024px) and (orientation: landscape) {
+  #box3 { min-height: 75vh; }
+  .box3-text1 { font-size: clamp(40px, 4vw, 60px); top: 40vh; left: 32%; transform: translateX(-50%); }
+  .box3-text2 { font-size: clamp(22px, 3vw, 35px); top: 15vh; left: 85%; transform: translateX(-50%); line-height: 0.5; }
+}
+
+/* ================ لپ‌تاپ معمولی ================ */
+@media (min-width:1025px) and (max-width:1439px) {
+  #box3 { min-height: 70vh; }
+  .box3-text1 { font-size: clamp(45px, 3.5vw, 65px); top: 38vh; left: 35%; transform: translateX(-50%); }
+  .box3-text2 { font-size: clamp(25px, 2.5vw, 35px); top: 14vh; left: 80%; transform: translateX(-50%); line-height: 0.5; }
+}
+
+/* ================ لپ‌تاپ استاندارد ================ */
+@media (min-width:1440px) and (max-width:1919px) {
+ #box3 {
+    width: 100vw;
+    height: 100vh;
+    /* اگر می‌خواهید تصویر بدون کشیده شدن باشد */
+     background-size: cover;  background-position: center; }
+  .box3-text1 { font-size: clamp(70px, 3vw, 70px); top: 47vh; left: 30%; transform: translateX(-50%); }
+  .box3-text2 { font-size: clamp(40spx, 2vw, 38px); top: 20vh; left: 85%; transform: translateX(-50%); line-height: 0.5; }
+}
+
+/* ================ دسکتاپ بزرگ ================ */
+@media (min-width:1920px) {
+  #box3 {
+    width: 100vw;
+    height: 100vh;
+    /* اگر می‌خواهید تصویر بدون کشیده شدن باشد */
+     background-size: cover;  background-position: center; }
+  .box3-text1 {
+    font-size: clamp(80px, 2.5vw, 80px); top: 46vh;  left: 28%; transform: translateX(-50%);}
+  .box3-text2 {
+    font-size: clamp(32px, 2vw, 40px); top: 21vh;  left: 85%;  transform: translateX(-50%);  line-height: 0.5;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="nav-logo">
+  <img src="images/27.svg" alt="logo">
+</div>
+
+<a href="about.html" target="_blank">ABOUT ME</a>
+<a href="built.html" target="_blank">BUILT SYSTEMS</a>
+<a href="contact.html" target="_blank">CONTACT ME</a>
+
+</nav>
+
+<div class="dropdown-menu" id="dropdownMenu">
+<a href="about.html">ABOUT ME</a>
+<a href="built.html">BUILT SYSTEMS</a>
+<a href="contact.html">CONTACT ME</a>
+</div>
+
+ <div class="hero">
+  <div class="fog"></div>
+
+  <div class="grid">
+       <div class="img img-1"></div>
+    <div class="img img-2"></div>
+    <div class="img img-3"></div>
+    <div class="img img-4"></div>
+    <div class="img img-5"></div>
+    <div class="img img-6"></div>
+    <div class="img img-7"></div>
+  </div>
+  </div>
+
+</div>
+
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const menu = document.getElementById("dropdownMenu");
+
+hamburger.addEventListener("click",()=>{
+hamburger.classList.toggle("active");
+menu.classList.toggle("open");
+});
+
+document.addEventListener("click",(e)=>{
+if(!hamburger.contains(e.target) && !menu.contains(e.target)){
+menu.classList.remove("open");
+}
+});
+
+</script>
+
+</body>
 </html>

@@ -49,14 +49,14 @@ function ProjectScene({ project, onClose, onEnter }) {
             marginBottom: "20px"
           }}>{project.title}</h2>
 
-          <div style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "12px",
-            justifyContent: "center",
-            maxWidth: "600px"
-          }}>
-
+         <div style={{
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "12px",
+  justifyContent: "center",
+  maxWidth: "600px",
+  padding: "0 20px"
+}}>
             {project.url && (
               <button
                 onClick={() => { setEntered(true); onEnter && onEnter() }}

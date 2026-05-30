@@ -1,0 +1,72 @@
+.project-track {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.project-card {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.project-icon {
+  font-size: 48px;
+}
+
+.project-title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #111111;
+}
+
+.project-status {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #888888;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  background-color: rgba(255,255,255,0.7);
+  transition: opacity 0.6s ease;
+}
+
+.project-card.inactive .project-overlay {
+  opacity: 0.6;
+}
+
+.project-card.active .project-overlay {
+  opacity: 0;
+}
+
+.project-card.active {
+  transform: scale(1.08);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  background-color: red;
+}
+
+.project-card.inactive {
+  transform: scale(1);
+}

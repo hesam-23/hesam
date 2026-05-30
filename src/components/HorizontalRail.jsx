@@ -10,16 +10,19 @@ function HorizontalRail({ activeProjectId, setActiveProjectId }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showAbout, setShowAbout] = useState(false)
   const [showContact, setShowContact] = useState(false)
+  const [projectEntered, setProjectEntered] = useState(false)
   const { t, lang } = useLang()
 
   const goToProject = (index) => {
     setCurrentIndex(index + 1)
     setActiveProjectId(projects[index].id)
+    setProjectEntered(false)
   }
 
   const goHome = () => {
     setCurrentIndex(0)
     setActiveProjectId(null)
+    setProjectEntered(false)
   }
 
   const activeProject = projects.find(p => p.id === activeProjectId)
@@ -34,21 +37,23 @@ function HorizontalRail({ activeProjectId, setActiveProjectId }) {
       left: 0
     }}>
 
-      <div style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 9999
-      }}>
-        <Navbar
-          onHome={goHome}
-          onAbout={() => setShowAbout(true)}
-          onContact={() => setShowContact(true)}
-          hiddenHome={showAbout || showContact}
-          hidden={showAbout || showContact}
-        />
-      </div>
+      {!projectEntered && (
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999
+        }}>
+          <Navbar
+            onHome={goHome}
+            onAbout={() => setShowAbout(true)}
+            onContact={() => setShowContact(true)}
+            hiddenHome={showAbout || showContact}
+            hidden={showAbout || showContact}
+          />
+        </div>
+      )}
 
       <div style={{
         width: "100vw",
@@ -63,12 +68,12 @@ function HorizontalRail({ activeProjectId, setActiveProjectId }) {
         position: "relative"
       }}>
         <h1 className="hero-title" style={{
-  fontSize: "48px",
-  fontWeight: "300",
-  letterSpacing: "-1px",
-  color: "#111",
-  direction: lang === "fa" ? "rtl" : "ltr"
-}}>{t.hero}</h1>
+          fontSize: "48px",
+          fontWeight: "300",
+          letterSpacing: "-1px",
+          color: "#111",
+          direction: lang === "fa" ? "rtl" : "ltr"
+        }}>{t.hero}</h1>
 
         <div style={{
           display: "flex",
@@ -145,7 +150,6 @@ function HorizontalRail({ activeProjectId, setActiveProjectId }) {
           </div>
         </div>
 
-        {/* Footer */}
         <div style={{
           position: "absolute",
           bottom: "24px",
@@ -184,6 +188,7 @@ function HorizontalRail({ activeProjectId, setActiveProjectId }) {
             key={activeProjectId}
             project={activeProject}
             onClose={goHome}
+            onEnter={() => setProjectEntered(true)}
           />
         </div>
       )}

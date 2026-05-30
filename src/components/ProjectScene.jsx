@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useLang } from "../LanguageContext.jsx"
 
-function ProjectScene({ project, onClose }) {
-  const { lang } = useLang()
+function ProjectScene({ project, onClose, onEnter }) {
+  const { lang, t } = useLang()
   const [showSummary, setShowSummary] = useState(false)
   const [showSkills, setShowSkills] = useState(false)
   const [entered, setEntered] = useState(false)
@@ -15,17 +15,19 @@ function ProjectScene({ project, onClose }) {
       backgroundColor: project.color
     }}>
 
-      {entered && project.url && (
-        <iframe
-          src={project.url}
-          style={{
-            width: "100%",
-            height: "calc(100% - 60px)",
-            border: "none",
-            marginTop: "60px"
-          }}
-        />
-      )}
+   {entered && project.url && (
+  <iframe
+    src={project.url}
+    style={{
+      width: "100%",
+      height: "100vh",
+      border: "none",
+      position: "absolute",
+      top: 0,
+      left: 0
+    }}
+  />
+)}
 
       {!entered && (
         <div style={{
@@ -48,16 +50,16 @@ function ProjectScene({ project, onClose }) {
           }}>{project.title}</h2>
 
           <div style={{
-  display: "flex",
-  flexWrap: "wrap",
-  gap: "12px",
-  justifyContent: "center",
-  maxWidth: "600px"
-}}>
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "12px",
+            justifyContent: "center",
+            maxWidth: "600px"
+          }}>
 
             {project.url && (
               <button
-                onClick={() => setEntered(true)}
+                onClick={() => { setEntered(true); onEnter && onEnter() }}
                 style={{
                   padding: "14px 32px",
                   backgroundColor: "white",
@@ -69,24 +71,24 @@ function ProjectScene({ project, onClose }) {
                   border: "none",
                   cursor: "pointer"
                 }}
-              >ENTER →</button>
+              >{t.project.enter}</button>
             )}
 
-           <button
-  onClick={onClose}
-  className="mobile-only"
-  style={{
-    padding: "14px 32px",
-    backgroundColor: "rgba(255,255,255,0.15)",
-    color: "white",
-    borderRadius: "30px",
-    fontSize: "12px",
-    fontWeight: "600",
-    letterSpacing: "2px",
-    border: "1px solid rgba(255,255,255,0.4)",
-    cursor: "pointer"
-  }}
->← HOME </button>
+            <button
+              onClick={onClose}
+              className="mobile-only"
+              style={{
+                padding: "14px 32px",
+                backgroundColor: "rgba(255,255,255,0.15)",
+                color: "white",
+                borderRadius: "30px",
+                fontSize: "12px",
+                fontWeight: "600",
+                letterSpacing: "2px",
+                border: "1px solid rgba(255,255,255,0.4)",
+                cursor: "pointer"
+              }}
+            >{t.project.back}</button>
 
             <button
               onClick={() => setShowSummary(true)}
@@ -101,7 +103,7 @@ function ProjectScene({ project, onClose }) {
                 border: "1px solid rgba(255,255,255,0.4)",
                 cursor: "pointer"
               }}
-            >SUMMARY</button>
+            >{t.project.summary}</button>
 
             <button
               onClick={() => setShowSkills(true)}
@@ -116,7 +118,7 @@ function ProjectScene({ project, onClose }) {
                 border: "1px solid rgba(255,255,255,0.4)",
                 cursor: "pointer"
               }}
-            >SKILLS</button>
+            >{t.project.skills}</button>
 
           </div>
         </div>
@@ -169,7 +171,7 @@ function ProjectScene({ project, onClose }) {
                 fontSize: "12px",
                 letterSpacing: "1px"
               }}
-            >CLOSE</button>
+            >{t.project.close}</button>
           </div>
         </div>
       )}
@@ -202,7 +204,7 @@ function ProjectScene({ project, onClose }) {
               fontWeight: "600",
               color: "#111",
               marginBottom: "24px"
-            }}>Technologies Used</h2>
+            }}>{t.project.technologies}</h2>
             <div style={{
               display: "flex",
               flexWrap: "wrap",
@@ -232,7 +234,7 @@ function ProjectScene({ project, onClose }) {
                 fontSize: "12px",
                 letterSpacing: "1px"
               }}
-            >CLOSE</button>
+            >{t.project.close}</button>
           </div>
         </div>
       )}

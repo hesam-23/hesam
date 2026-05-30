@@ -30,7 +30,17 @@ p2: "Every system we build solves a real problem.",
     errorEmailValid: "Please enter a valid email address",
     errorServer: "Something went wrong. Please try again.",
     errorConnection: "Connection error. Please try again."
-  }
+  },
+  
+  project: {
+  enter: "ENTER →",
+  back: "← BACK",
+  summary: "SUMMARY",
+  skills: "SKILLS",
+  close: "CLOSE",
+  technologies: "Technologies Used",
+  comingSoon: "COMING SOON"
+}
 }
 
 export default en

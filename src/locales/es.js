@@ -30,7 +30,16 @@ p2: "Cada sistema que construimos resuelve un problema real.",
     errorEmailValid: "Por favor ingresa un correo válido",
     errorServer: "Algo salió mal. Por favor intenta de nuevo.",
     errorConnection: "Error de conexión. Por favor intenta de nuevo."
-  }
+  },
+  project: {
+  enter: "ENTRAR →",
+  back: "← VOLVER",
+  summary: "RESUMEN",
+  skills: "HABILIDADES",
+  close: "CERRAR",
+  technologies: "Tecnologías Utilizadas",
+  comingSoon: "PRÓXIMAMENTE"
+}
 }
 
 export default es

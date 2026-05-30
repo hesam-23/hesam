@@ -30,7 +30,16 @@ p2: "هر سیستمی که می‌سازیم یک مشکل واقعی را حل
     errorEmailValid: "لطفاً یک آدرس ایمیل معتبر وارد کنید",
     errorServer: "مشکلی پیش آمد. لطفاً دوباره تلاش کنید.",
     errorConnection: "خطای اتصال. لطفاً دوباره تلاش کنید."
-  }
+  },
+  project: {
+  enter: "ورود →",
+  back: "← بازگشت",
+  summary: "خلاصه",
+  skills: "تکنولوژی‌ها",
+  close: "بستن",
+  technologies: "تکنولوژی‌های استفاده شده",
+  comingSoon: "به زودی"
+}
 }
 
 export default fa

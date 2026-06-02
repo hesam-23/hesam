@@ -55,6 +55,7 @@ function HorizontalRail({ activeProjectId, setActiveProjectId }) {
         </div>
       )}
 
+      {/* صفحه اصلی */}
       <div style={{
         width: "100vw",
         height: "100vh",
@@ -63,101 +64,101 @@ function HorizontalRail({ activeProjectId, setActiveProjectId }) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: "60px",
-        paddingTop: "60px",
-        position: "relative"
+        paddingTop: "60px"
       }}>
         <h1 className="hero-title" style={{
           fontSize: "48px",
           fontWeight: "300",
           letterSpacing: "-1px",
           color: "#111",
-          direction: lang === "fa" ? "rtl" : "ltr"
+          direction: lang === "fa" ? "rtl" : "ltr",
+          textAlign: "center",
+          padding: "0 20px",
+          marginBottom: "40px"
         }}>{t.hero}</h1>
 
-        <div style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "30px"
-        }}>
-          <p style={{
-            fontSize: "11px",
-            letterSpacing: "4px",
-            color: "#888",
-            fontWeight: "400"
-          }}>{t.builtSystems}</p>
+        <p style={{
+          fontSize: "11px",
+          letterSpacing: "4px",
+          color: "#888",
+          fontWeight: "400",
+          marginBottom: "24px"
+        }}>{t.builtSystems}</p>
 
-          <div className="project-grid">
-            {projects.map((project, index) => (
+        <div className="project-grid">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              onClick={() => goToProject(index)}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "10px",
+                cursor: "pointer"
+              }}
+            >
               <div
-                key={project.id}
-                onClick={() => goToProject(index)}
                 style={{
+                  width: "80px",
+                  height: "80px",
+                  borderRadius: "20px",
+                  backgroundColor: project.color,
                   display: "flex",
-                  flexDirection: "column",
                   alignItems: "center",
-                  gap: "10px",
-                  cursor: "pointer"
+                  justifyContent: "center",
+                  fontSize: "36px",
+                  transition: "transform 0.3s ease",
+                  boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
                 }}
+                onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1)"}
+                onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
               >
-                <div
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    borderRadius: "20px",
-                    backgroundColor: project.color,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "36px",
-                    transition: "transform 0.3s ease",
-                    boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1)"}
-                  onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
-                >
-                  {project.emoji}
-                </div>
-                <div style={{
-                  fontSize: "11px",
-                  fontWeight: "600",
-                  color: "#111",
-                  letterSpacing: "0.5px"
-                }}>{project.title}</div>
-                <div style={{
-                  fontSize: "9px",
-                  color: "#aaa",
-                  letterSpacing: "2px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "4px"
-                }}>
-                  {project.status === "LIVE" && (
-                    <span style={{
-                      width: "6px",
-                      height: "6px",
-                      borderRadius: "50%",
-                      backgroundColor: "#22c55e",
-                      display: "inline-block",
-                      animation: "pulse 1.5s infinite"
-                    }} />
-                  )}
-                  {project.status}
-                </div>
+                {project.emoji}
               </div>
-            ))}
-          </div>
+              <div style={{
+                fontSize: "11px",
+                fontWeight: "600",
+                color: "#111",
+                letterSpacing: "0.5px"
+              }}>{project.title}</div>
+              <div style={{
+                fontSize: "9px",
+                color: "#aaa",
+                letterSpacing: "2px",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px"
+              }}>
+                {project.status === "LIVE" && (
+                  <span style={{
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    backgroundColor: "#22c55e",
+                    display: "inline-block",
+                    animation: "pulse 1.5s infinite"
+                  }} />
+                )}
+                {project.status}
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
 
+      {/* Footer ثابت پایین */}
+      {!activeProject && !showAbout && !showContact && (
         <div style={{
-          position: "absolute",
-          bottom: "24px",
-          left: 0, right: 0,
+          position: "fixed",
+          bottom: "16px",
+          left: 0,
+          right: 0,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "6px"
+          gap: "4px",
+          zIndex: 50
         }}>
           <p style={{
             fontSize: "11px",
@@ -175,8 +176,7 @@ function HorizontalRail({ activeProjectId, setActiveProjectId }) {
             <img src="https://flagcdn.com/w20/us.png" alt="US flag" style={{width: "20px"}} />
           </p>
         </div>
-
-      </div>
+      )}
 
       {activeProject && (
         <div style={{

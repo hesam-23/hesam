@@ -2,7 +2,7 @@ const projects = [
   {
     id: 1,
     key: "coffee",
-    title: "Hegolz Coffee",
+    title: "OrderFlow",
     subtitle: {
       en: "Cafe Order System",
       fa: "سیستم سفارش کافه",
@@ -23,7 +23,7 @@ const projects = [
   {
     id: 2,
     key: "english",
-    title: "Hegolz English",
+    title: "ReadLearn",
     subtitle: {
       en: "Learning Reader App",
       fa: "اپلیکیشن یادگیری زبان انگلیسی",
@@ -44,7 +44,7 @@ const projects = [
   {
     id: 3,
     key: "booking",
-    title: "Hegolz Booking",
+    title: "Appointa",
     subtitle: {
       en: "SaaS Booking System",
       fa: "سیستم رزرواسیون",
@@ -61,7 +61,7 @@ const projects = [
   {
     id: 4,
     key: "airline",
-    title: "Hegolz Airline",
+    title: "SkyBook",
     subtitle: {
       en: "Internal Operations Platform",
       fa: "پلتفرم عملیات داخلی",

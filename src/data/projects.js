@@ -50,13 +50,17 @@ const projects = [
       fa: "سیستم رزرواسیون",
       es: "Sistema de Reservas SaaS"
     },
-    status: "COMING SOON",
+    status: "LIVE",
     color: "#16213e",
     accent: "#0f3460",
     emoji: "📅",
-    url: null,
-    summary: { en: "", fa: "", es: "" },
-    skills: []
+    url:"https://appointa-fm1n.onrender.com",
+    summary: {
+       en: "Developed a full-stack appointment booking platform with secure authentication, role-based access control, appointment scheduling, reminders, and an analytics dashboard.",
+        fa: "یک پلتفرم کامل رزرو نوبت توسعه داده‌ام که شامل احراز هویت امن، مدیریت نقش‌ها، زمان‌بندی نوبت‌ها، سیستم یادآوری و داشبورد تحلیلی است.",
+         es: "Desarrollé una plataforma completa de reservas con autenticación segura, control de roles, programación de citas, recordatorios y panel de análisis." 
+        },
+    skills: ["Next.js", "TypeScript", "PostgreSQL", "Prisma ORM", "NextAuth.js", "Tailwind CSS", "REST API", "Authentication", "Role-Based Access Control", "Appointment Scheduling", "Analytics Dashboard", "Audit Logging", "Resend"]
   },
   {
     id: 4,

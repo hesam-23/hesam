@@ -59,7 +59,7 @@ function ProjectScene({ project, onClose, onEnter }) {
 }}>
             {project.url && (
               <button
-                onClick={() => { setEntered(true); onEnter && onEnter() }}
+                onClick={() => { window.open(project.url, '_blank') }}
                 style={{
                   padding: "14px 32px",
                   backgroundColor: "white",

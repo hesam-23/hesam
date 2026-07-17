@@ -54,7 +54,7 @@ const projects = [
     color: "#16213e",
     accent: "#0f3460",
     emoji: "📅",
-    url:"https://appointa-fm1n.onrender.com",
+    url:"https://appointa-sk6u.onrender.com",
     summary: {
        en: "Developed a full-stack appointment booking platform with secure authentication, role-based access control, appointment scheduling, reminders, and an analytics dashboard.",
         fa: "یک پلتفرم کامل رزرو نوبت توسعه داده‌ام که شامل احراز هویت امن، مدیریت نقش‌ها، زمان‌بندی نوبت‌ها، سیستم یادآوری و داشبورد تحلیلی است.",
